@@ -25,7 +25,8 @@
     "file-saver": "^2.0.5",
     "luckyexcel": "^1.0.1",
     "moment": "^2.29.4",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",

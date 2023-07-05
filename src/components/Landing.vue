@@ -3,25 +3,52 @@
       <div class="logo-container">
         <img src="https://ir.murphyoilcorp.com/sites/g/files/knoqqb75861/themes/site/nir_pid7774/dist/images/logo.png" alt="Company Logo" class="logo" />
       </div>
-      <div class="info">
-        <h1>Welcome to our Demo</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-        <button @click="startDemo">Start Demo</button>
+      <div class="info-container">
+        <h1>Welcome to Our Demo</h1>
+        <p>Short information about the demo goes here.</p>
+      </div>
+      <div class="features-container">
+        <h2>App Features</h2>
+        <ul>
+          <li>Feature 1</li>
+          <li>Feature 2</li>
+          <li>Feature 3</li>
+          <li>Feature 1</li>
+          <li>Feature 2</li>
+          <li>Feature 3</li>
+          <li>Feature 1</li>
+          <li>Feature 2</li>
+          <li>Feature 3</li>
+          <!-- Add more features as needed -->
+        </ul>
+      <button class="demo-button" @click="startDemo">Start Demo</button>
       </div>
     </div>
   </template>
   
   <script>
-  export default {
-    methods: {
-      startDemo() {
-        this.$router.push('/main-screen');
-      }
+export default {
+  methods: {
+    startDemo() {
+      // Perform any necessary logic or redirection here
+      // For example:
+      this.$router.push('/');
     }
   }
-  </script>
-  
-  <style>
+}
+</script>
+
+<style scoped>
+  .demo-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
   .landing-page {
     display: flex;
     flex-direction: column;
@@ -36,31 +63,29 @@
   }
   
   .logo {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
   
-  .info {
+  .info-container {
     text-align: center;
+    /* margin-bottom: 15px; */
   }
   
-  h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+  .features-container {
+    text-align: center;
+    margin-bottom: 30px;
   }
   
-  p {
-    font-size: 16px;
-    margin-bottom: 20px;
+  .start-demo-button {
+    margin-bottom: 30px;
   }
   
-  button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
   }
+  
+  /* Rest of your CSS styles */
   </style>
+  
