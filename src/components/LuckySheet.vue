@@ -1,20 +1,10 @@
 <template>
   <div class="container">
   <div class="toolbar">
-    <!-- <input id="uploadBtn" type="file" @change="loadExcel" /> -->
-
-    <!-- <span>Or Load remote xlsx file:</span>
-
-    <select v-model="selected" @change="selectExcel">
-      <option disabled value="">Choose</option>
-      <option
-        v-for="option in options"
-        :key="option.text"
-        :value="option.value"
-      >
-        {{ option.text }}
-      </option>
-    </select> -->
+    <div class="logo-container">
+        <img src="https://ir.murphyoilcorp.com/sites/g/files/knoqqb75861/themes/site/nir_pid7774/dist/images/logo.png" alt="Logo" class="logo" />
+      </div>
+    <div class="centered-elements">
     <select v-model="selectedVersion" @change="selectVersion" class="styled-select">
       <option disabled value="">Choose Version</option>
       <option v-for="ver in versions" :key="ver.text" :value="ver.value">{{ ver.text }}</option>
@@ -28,19 +18,9 @@
     <button><a href="javascript:void(0)" @click="downloadExcel"
       >Download source xlsx file</a
     ></button>
-    <!-- <select v-model="selectedVersion" @change="selectVersion">
-      <option disabled value="">Choose</option>
-      <option
-        v-for="ver in versions"
-        :key="ver.text"
-        :value="ver.value"
-      >
-        {{ ver.text }}
-      </option>
-    </select> -->
-    
   </div>
   </div>
+</div>
   <div id="luckysheet"></div>
   <div v-show="isMaskShow" id="tip">Downloading</div>
 </template>
@@ -203,7 +183,7 @@ const downloadExcel = () => {
   //     document.body.appendChild(elemIF);
   // }
   // elemIF.src = value;
-  exportExcel(luckysheet.getAllSheets(), "下载");
+  exportExcel(luckysheet.getAllSheets(), "Murphy_Excel");
 };
 
 const postData = () => {
@@ -233,8 +213,9 @@ const getData = () => {
       .get('http://localhost:5000/data')
       .then(response => {
         let newData = [];
-        newData = response.data[0].dataArray;
-        console.log(newData);
+        let checkLength = response.data.length;
+        newData = response.data[checkLength-1].dataArray;
+        console.log(response.data[checkLength-1].dataArray,'suiii');
         const datesArray = response.data.map(obj => {
           const date = new Date(obj.timestamp);
           // console.log(obj.timestamp.substring(0,9),'ffff');
@@ -267,16 +248,14 @@ const selectVersion = () =>{
       .get(`http://localhost:5000/data/${selectedVersion.value}`)
       .then(response => {
         let newData = [];
-        // newData = response.data[2].dataArray;
-        console.log(response.data,'data from selectVersion');
         let version = selectedVersion.value;
         response.data.forEach(element => {
-          console.log(version, 'asdasdwohhooo' , element.timestamp);
+          // console.log(version, 'asdasdwohhooo' , element.timestamp);
           if(version === element.timestamp){
             // newData.push(element.dataArray[0]);
             newData = element.dataArray;
           }
-            console.log(newData,"newData");
+            // console.log(newData,"newData");
         });
         sheetData.value = newData;
         luckysheet.create({
@@ -303,10 +282,27 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* .toolbar-wrapper {
+  position: relative;
+  z-index: 1;
+  border-bottom: 2px solid #ccc;
+} */
+.logo-container {
+  margin: 0 15px 5px 0;
+}
+
+.logo {
+  height: 50px;
+}
+
+.centered-elements {
+  display: flex;
+  align-items: center;
+}
 .container{
   display: flex;
   justify-content: center;
-  border-bottom: 2px solid #ccc;
+  /* border-bottom: 2px solid #ccc; */
 }
 .toolbar {
   position: absolute;
@@ -335,7 +331,7 @@ a{
   color: white;
 }
 #luckysheet {
-  margin-top: 30px;
+  margin-top: 40px;
   padding: 0px;
   position: absolute;
   width: 100%;
