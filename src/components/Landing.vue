@@ -7,20 +7,22 @@
         <h1>Welcome to Our Demo</h1>
         <p>Short information about the demo goes here.</p>
       </div>
-      <div class="features-container">
+      <div style="text-align: center;">
         <h2>App Features</h2>
+      </div>
+      <div class="features-container">
         <ul>
-          <li>Feature 1</li>
-          <li>Feature 2</li>
-          <li>Feature 3</li>
-          <li>Feature 1</li>
-          <li>Feature 2</li>
-          <li>Feature 3</li>
-          <li>Feature 1</li>
-          <li>Feature 2</li>
-          <li>Feature 3</li>
+            <li>Formatting: style, conditional formatting, text alignment and rotation, text truncation, overflow, automatic line wrapping, multiple data types, cell segmentation style</li>
+          <li>Cells: drag and drop, fill handle, multiple selection, find and replace, location, merge cells, data verification</li>
+          <li>Row & column: hide, insert, delete rows or columns, freeze, and split text</li>
+          <li>Operation: undo, redo, copy, paste, cut, hot key, format painter, drag and drop selection</li>
+          <li>Formulas & Functions: Built-in, remote and custom formulas</li>
+          <li>Tables: filter, sort</li>
+          <li>Enhanced functions: Pivot tables, charts, comments, cooperative editing, insert picture, matrix calculations, screenshots, copying to other formats, EXCEL import and export, etc.</li>
           <!-- Add more features as needed -->
         </ul>
+      </div>
+      <div style="text-align: center;">
       <button class="demo-button" @click="startDemo">Start Demo</button>
       </div>
     </div>
@@ -73,7 +75,7 @@ export default {
   }
   
   .features-container {
-    text-align: center;
+    text-align: justify;
     margin-bottom: 30px;
   }
   
